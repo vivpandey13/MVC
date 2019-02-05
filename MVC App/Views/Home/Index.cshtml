@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script type="text/javascript">
+    function submitForm() {
+        var form = $(this);
+        var myID = document.getElementById("ID").value;
+        var myName = document.getElementById("Name").value;
+        var myData = { id: myID, name: myName };
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/Save",
+            data: myData, // serializes the form's elements.
+            success: function (data) {
+                alert(data); 
+            }
+        });
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <label>ID</label>
+        <input type="text" id="ID" name="ID"/>
+        
+        
+    </div>
+    <div class="col-md-4">
+        <label>Name</label>
+        <input type="text" id="Name" name="Name" />
+    </div>
+    <div class="col-md-4">
+        <input type="button" onclick="submitForm()" name="Submit" value="Submit" />
+    </div>
+</div>
